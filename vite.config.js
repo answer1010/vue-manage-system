@@ -5,5 +5,9 @@ export default {
     plugins: [vue()],
     optimizeDeps: {
         include: ['schart.js']
+    },
+    server: {
+        host: "",
+        port: "8080"
     }
 }
