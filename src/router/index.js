@@ -18,6 +18,13 @@ const routes = [
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
             }, {
+                path: "/recommend",
+                name: "Recommend",
+                meta: {
+                    title: '推荐页面'
+                },
+                component: () => import ( /* webpackChunkName: "table" */ "../views/Recommend.vue")
+            }, {
                 path: "/table",
                 name: "basetable",
                 meta: {

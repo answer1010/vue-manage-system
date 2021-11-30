@@ -17,6 +17,7 @@
                         </div>
                         <div class="info-name">{{ name }}</div>
                         <div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
+                        <div>班级: 18计算机2班</div>
                     </div>
                 </el-card>
             </el-col>
