@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">后台管理系统</div>
+            <div class="ms-title">就业推荐系统</div>
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="username">
@@ -32,6 +32,7 @@ import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
+import { loginData } from "../api/index"
 
 export default {
     setup() {
@@ -53,19 +54,27 @@ export default {
                 { required: true, message: "请输入密码", trigger: "blur" },
             ],
         };
-        const login = ref(null);
+        const code = ref();
+        const message = ref();
         const submitForm = () => {
-            login.value.validate((valid) => {
-                if (valid) {
-                    ElMessage.success("登录成功");
-                    localStorage.setItem("ms_username", param.username);
-                    router.push("/");
-                } else {
-                    ElMessage.error("登录成功");
-                    return false;
-                }
-            });
+          loginData(param).then((res) => {
+            console.log(param)
+            console.log("res"+res);
+            code.value = res.code;
+            message.value = res.message;
+            if (code.value == 200){
+              console.log(code.value);
+              ElMessage.success("登录成功");
+              localStorage.setItem("ms_username", param.username);
+              router.push("/");
+            } else {
+              ElMessage.error(message.value)
+              return false;
+            }
+          });
+
         };
+
 
         const store = useStore();
         store.commit("clearTags");
@@ -73,7 +82,6 @@ export default {
         return {
             param,
             rules,
-            login,
             submitForm,
         };
     },
@@ -85,7 +93,7 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(../assets/img/login-bg.jpg);
+    background-image: url(../assets/img/1.jpg);
     background-size: 100%;
 }
 .ms-title {

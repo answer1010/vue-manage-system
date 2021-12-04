@@ -7,3 +7,11 @@ export const fetchData = query => {
         params: query
     });
 };
+
+export const loginData = params => {
+    return request({
+        url: './login.json',
+        method: 'post',
+        params: params
+    })
+}

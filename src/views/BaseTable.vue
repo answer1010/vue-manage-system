@@ -95,8 +95,10 @@ export default {
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
+          console.log(query);
             fetchData(query).then((res) => {
-                tableData.value = res.list;
+              console.log(res);
+              tableData.value = res.list;
                 pageTotal.value = res.pageTotal || 50;
             });
         };
