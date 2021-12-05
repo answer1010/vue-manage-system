@@ -10,8 +10,9 @@ export const fetchData = query => {
 
 export const loginData = params => {
     return request({
-        url: './login.json',
+        url: '/login',
         method: 'post',
-        params: params
+        data: params,
+        contentType: 'application/json'
     })
 }

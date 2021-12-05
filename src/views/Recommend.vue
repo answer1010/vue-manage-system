@@ -27,30 +27,28 @@
   </div>
 
 
-
-
-<!--  <div>-->
-<!--    <div class="crumbs">-->
-<!--      <el-breadcrumb separator="/">-->
-<!--        <el-breadcrumb-item>-->
-<!--          <i class="el-icon-lx-cascades"></i> 推荐列表-->
-<!--        </el-breadcrumb-item>-->
-<!--      </el-breadcrumb>-->
-<!--    </div>-->
-<!--    <div><h1>推荐页面</h1></div>-->
-<!--    <div class="login-btn">-->
-<!--      <el-button type="primary" @click="getData()">登录</el-button>-->
-<!--    </div>-->
-<!--    <div>{{code}}</div>-->
-<!--    <div>{{message}}</div>-->
-<!--  </div>-->
+  <!--  <div>-->
+  <!--    <div class="crumbs">-->
+  <!--      <el-breadcrumb separator="/">-->
+  <!--        <el-breadcrumb-item>-->
+  <!--          <i class="el-icon-lx-cascades"></i> 推荐列表-->
+  <!--        </el-breadcrumb-item>-->
+  <!--      </el-breadcrumb>-->
+  <!--    </div>-->
+  <!--    <div><h1>推荐页面</h1></div>-->
+  <!--    <div class="login-btn">-->
+  <!--      <el-button type="primary" @click="getData()">登录</el-button>-->
+  <!--    </div>-->
+  <!--    <div>{{code}}</div>-->
+  <!--    <div>{{message}}</div>-->
+  <!--  </div>-->
 </template>
 
 <script>
-import { ref, reactive } from "vue";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
-import { ElMessage } from "element-plus";
+import {ref, reactive} from "vue";
+import {useStore} from "vuex";
+import {useRouter} from "vue-router";
+import {ElMessage} from "element-plus";
 import {loginData} from "../api/index";
 
 export default {
@@ -72,7 +70,7 @@ export default {
         console.log(res);
         code.value = res.code;
         message.value = res.message;
-        console.log("code:"+code.value);
+        console.log("code:" + code.value);
         if (code.value == 200) {
           ElMessage.success("登录成功");
           localStorage.setItem("ms_username", param.username);
@@ -82,7 +80,6 @@ export default {
         }
       });
     };
-
 
 
     return {
